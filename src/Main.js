@@ -5,11 +5,12 @@ class Main extends Component {
 
     saveText = () => {
         
-        const textToWrite = document.getElementById('textarea').innerHTML;
-        let textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
-        const fileNameToSaveAs = 'text.docx';
+        var textToWriteOne = document.getElementById('textarea-en').value;
+        var textToWriteTwo = document.getElementById('textarea-ar').value;
+        var textFileAsBlob = new Blob([textToWriteOne, textToWriteTwo], {type: 'text/plain'});
+        var fileNameToSaveAs = 'text.txt';
 
-        let downloadLink = document.createElement('a');
+        var downloadLink = document.createElement('a');
         downloadLink.download = fileNameToSaveAs;
         downloadLink.innerHTML = 'Download File';
         if (window.webKitURL != null) {
@@ -36,7 +37,7 @@ class Main extends Component {
                 <div className='tools'>
                 <button
                 type='button'
-                onClick={() => this.saveText()}
+                onClick={() => {this.saveText()}}
                 value='Save'
                 id='save'
                 >
@@ -44,20 +45,18 @@ class Main extends Component {
                 </button>
                 </div>
                 <textarea 
-                id="textarea"
+                id="textarea-en"
                 className='textarea-en' 
                 name="en-text"
                 rows="40" cols="100"
-                maxLength="5000"
                 lang="en"
                 wrap="hard">
                 </textarea>
                 <textarea 
-                id="textarea"
+                id="textarea-ar"
                 className='textarea-ar'
                 name="en-text"
                 rows="40" cols="100"
-                maxLength="5000"
                 lang="ar"
                 wrap="hard">
                 </textarea>
